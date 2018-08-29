@@ -1,0 +1,53 @@
+.header-container {
+    background-color: blue;
+}
+.img-dimension {
+    height: 50px;
+    margin-top: -8%;
+}
+.top-header-icons{
+    color: white;
+    font-size: 30px;
+    margin-top: 2%;
+    margin-right: 0px;
+}
+
+.header-navs:hover {
+    color: #010000;
+    font-size: 15px;
+    font-family: serif;
+}
+
+.header-navs {
+    color: white;
+    font-size: 20px;
+    margin-left: 3%;
+    cursor: pointer; 
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #f7f6f6;
+} 
+
+.navbar {
+    background-color: blue;
+}
+
+.navbar-nav{
+    cursor: pointer; 
+    font-size: 15px;
+    font-family: serif;
+}
+
+.navbar-default {
+    background-color: #f8f8f800;
+    border-color: #e7e7e7;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    /* background-color: #340bd8; */
+    font-size: 18px;
+}
+
+

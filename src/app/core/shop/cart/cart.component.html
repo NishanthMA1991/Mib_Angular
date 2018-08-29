@@ -1,0 +1,87 @@
+<div class="container">
+	<div class="row">
+		<div class=" col-md-offset-2 col-md-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<div class="row">
+							<div class="col-md-6">
+								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+							</div>
+							<div class="col-md-6">
+								<button type="button" class="btn btn-primary btn-sm btn-block" (click)="goToShop()">
+									<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body" id="products">
+					<div *ngIf="noProduct">
+						<div class="alert alert-info">No Products to display!!!</div>	
+					</div>
+					<div class="row" *ngFor="let item of cartDetails">
+						<div class="col-xs-2"><img class="img-responsive" src="{{item.products[0].product_id.image}}" alt="image" style="width:40%;height:40%;">
+						</div>
+						<div class="col-md-4">
+							<h5 class="product-name"><strong>{{item.products[0].product_id.name}}</strong></h5>
+						</div>
+						<div class="col-md-6">
+							<div class="col-md-3 text-right">
+								<h6><strong><span class="currency">&#x20b9;</span>{{item.products[0].product_id.price}} 
+									<!-- <span class="text-muted">x</span> -->
+								</strong>
+								</h6>
+							</div>
+
+							<div class="col-md-3">
+								<input id="qty" #qty name="qty" type="text" placeholder="qty" disabled=true value="{{item.products[0].quantity}}" style="width:100%" >
+							</div>
+
+							<!-- <div class="col-xs-4">
+								{{item.products[0].quantity}}
+								
+								<select [ngModel]="range" (ngModelChange)="changeqty(item.products[0].product_id.price,$event)" class="form-control form-control-sm" >
+									<option value="1" > 1 </option> 
+									<option value="2" ng-selected="selected"> 2 </option>
+									<option value="3"> 3 </option>
+								</select>
+							</div> -->
+
+							<!-- <select [ngModel]="originalObject">
+									    <option *ngFor="let object of objects" [ngValue]="object" [selected]="object.uniqueId === originalObject.uniqueId">{{object.name}}</option>
+									</select>  -->
+							<div class="col-md-2">
+								<button type="button" class="btn btn-link btn-xs" (click)="deleteProduct(item.products[0].product_id._id)">
+									<span class="glyphicon glyphicon-trash"> </span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer" *ngIf="!noProduct">
+					<div class="row text-center">
+						<div class="col-xs-12">
+							<h4 class="text-right">Total <strong><span class="currency">&#x20b9;</span>{{totalSum}}</strong></h4>
+							<div class="col-xs-offset-7 col-xs-5" >
+								<button type="button" class="btn btn-success btn-block" (click)="checkout()">Checkout</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<!-- <p><strong>Enter your address:</strong></p>
+			<div class="input-group input-margin">
+				<textarea class="form-control" required rows="5" cols="100" id="comment" name="comment"> </textarea>
+			</div> -->
+			<br>
+			<!-- <div class="col-xs-offset-8 col-xs-5" >
+				<button type="button" class="btn btn-success btn-block">Checkout</button>
+			</div> -->
+		</div>
+	</div>
+	
+</div>

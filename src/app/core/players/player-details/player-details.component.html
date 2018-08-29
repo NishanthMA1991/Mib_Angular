@@ -1,0 +1,107 @@
+
+<div class="container" >
+	<div class="row panel">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="media">
+					
+					<a class="pull-left" href="#">
+						<img class="media-object" src="{{details.players[0].profileImage}}" style="width: 200px;height:200px;">
+					</a>
+					<div class="media-body">
+						<h3 class="media-heading"><b>{{details.players[0].playerName}}</b></h3> <small> India</small>
+						<h5>{{details.players[0].playerType}}</h5>
+						<hr style="margin:8px auto">
+						<span class="">{{details.players[0].profileDescription}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>   
+
+	<div class="container">
+		  
+		<h2>Player Stats</h2>
+		
+		<div class="panel-group">
+		  <div class="panel panel-warning">
+			<div class="panel-heading"><b>T20 Details</b></div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+					  <tr class="bg-primary">
+						<th scope="col">Matches</th>
+						<th scope="col">Runs</th>
+						<th scope="col">Hundreds</th>
+						<th scope="col">Fifties</th>
+						<th scope="col">Wickets</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr *ngFor="let t20 of details.t20">
+						<th scope="row">{{t20.matchesPlayed}}</th>
+						<td>{{t20.totalRunSored}}</td>
+						<td>{{t20.totalHundreads}}</td>
+						<td>{{t20.totalFifties}}</td>
+						<td>{{t20.wicketsTaken}}</td>
+					  </tr>
+					  
+					</tbody>
+				  </table>
+			</div>
+		  </div>
+		  <div class="panel panel-warning">
+			<div class="panel-heading"><b>ODI Details</b></div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+					  <tr class="bg-primary">
+						<th scope="col">Matches</th>
+						<th scope="col">Runs</th>
+						<th scope="col">Hundreds</th>
+						<th scope="col">Fifties</th>
+						<th scope="col">Wickets</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr *ngFor="let odi of details.odi">
+						<th scope="row">{{odi.matchesPlayed}}</th>
+						<td>{{odi.totalRunSored}}</td>
+						<td>{{odi.totalHundreads}}</td>
+						<td>{{odi.totalFifties}}</td>
+						<td>{{odi.wicketsTaken}}</td>
+					  </tr>
+					  
+					</tbody>
+				  </table>
+			</div>
+		  </div>
+		  <div class="panel panel-warning">
+			<div class="panel-heading"><b>Test Details</b></div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+					  <tr class="bg-primary">
+						<th scope="col">Matches</th>
+						<th scope="col">Runs</th>
+						<th scope="col">Hundreds</th>
+						<th scope="col">Fifties</th>
+						<th scope="col">Wickets</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr *ngFor="let test of details.test">
+						<th scope="row">{{test.matchesPlayed}}</th>
+						<td>{{test.totalRunSored}}</td>
+						<td>{{test.totalHundreads}}</td>
+						<td>{{test.totalFifties}}</td>
+						<td>{{test.wicketsTaken}}</td>
+					  </tr>
+					</tbody>
+				  </table>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  
+	</div>

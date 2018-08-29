@@ -1,0 +1,157 @@
+<div class="container">
+	<div class="row" >
+		<div class="panel panel-default">
+			<div class="panel-heading" style="background-color:cornflowerblue">
+				<b>User Profile</b>
+				<button type="button" class="btn btn-danger " style="margin-left:85% " data-toggle="modal"
+				data-target="#userForm">Update</button>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+					<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1"
+					 class="img-circle img-responsive">
+				</div>
+				<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+					<div class="container">
+						<h2 style="color:cornflowerblue;font-weight: bold">{{userDetails.fullName}}</h2>
+						<!-- <p> <b> ({{userDetails.user_type}})</b></p> -->
+					</div>
+					<hr>
+					<ul class="container details">
+						<li>
+							<p><span class="glyphicon glyphicon-phone one" style="width:50px;"></span>{{userDetails.phoneNumber}}</p>
+						</li>
+						<li>
+							<p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{userDetails.email}}</p>
+						</li>
+						<li>
+							<span class="glyphicon glyphicon-home one" style="width:50px;"></span>
+							<div style="margin-left: 5%;margin-top: -4%;">
+								<br><b># :</b> {{userDetails.address.number}}
+								<br><b>street :</b> {{userDetails.address.street}}
+								<br><b>city :</b> {{userDetails.address.city}}
+								<br><b>state :</b> {{userDetails.address.state}}
+								<br><b>country :</b> {{userDetails.address.country}}
+								<br><b>zip :</b> {{userDetails.address.zip}}
+							</div>
+						</li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+	<div id="userForm" class="modal fade" role="dialog">
+	<!-- <form (submit)="update($event)" class="form-horizontal" role="form"> -->
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="background-color:cornflowerblue;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="font-weight: bold;">Update User</h4>
+				</div>
+				<div class="modal-body" style="width:75%;margin-left:10%;">
+					<div class="alert alert-danger" *ngIf="errorMessage">
+						<strong>{{errorMessage}}</strong>
+					</div>
+					<div class="alert alert-info" *ngIf="successMessage">
+						<strong>{{successMessage}}</strong>
+					</div>
+					<form #regsiterForm="ngForm" (ngSubmit)="edit(enteredUser,regsiterForm)">
+						<div class="signup-fields">
+							<div class="form-group" [class.has-error]="fullName.invalid && fullName.touched" [class.has-success]="fullName.valid">
+								<label for="">Full Name</label>
+								<input type="text" [(ngModel)]="enteredUser.fullName" #fullName="ngModel" required name="fullName" class="form-control" placeholder="Full Name">
+								<span class="help-block" *ngIf="fullName.errors?.required && fullName.touched">
+									User Name is required
+								</span>
+							</div>
+							<div class="form-group" [class.has-error]="email.invalid && email.touched" [class.has-success]="email.valid">
+
+								<label for="">Email</label>
+								<input type="text" required [email]="enteredUser.email !== ''" [(ngModel)]="enteredUser.email" name="email" class="form-control" placeholder="Email"
+								 #email="ngModel">
+								<span class="help-block" *ngIf="email.errors?.required && email.touched">
+									Email is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="phoneNumber.invalid && phoneNumber.touched" [class.has-success]="phoneNumber.valid">
+								<label for="">Phone Number</label>
+								<input type="number" [(ngModel)]="enteredUser.phoneNumber" #phoneNumber="ngModel" required name="phoneNumber" class="form-control" placeholder="phoneNumber">
+								<span class="help-block" *ngIf="phoneNumber.errors?.required && phoneNumber.touched">
+									phoneNumber is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="snumber.invalid && snumber.touched" [class.has-success]="snumber.valid">
+								<label for="">Streat Number</label>
+								<input type="text" [(ngModel)]="enteredUser.snumber" #snumber="ngModel" required name="snumber" class="form-control" placeholder="snumber">
+								<span class="help-block" *ngIf="snumber.errors?.required && snumber.touched">
+									Streat Number is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="street.invalid && street.touched" [class.has-success]="street.valid">
+								<label for="">Streat</label>
+								<input type="text" [(ngModel)]="enteredUser.street" #street="ngModel" required name="street" class="form-control" placeholder="street">
+								<span class="help-block" *ngIf="street.errors?.required && street.touched">
+									Streat is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="city.invalid && city.touched" [class.has-success]="city.valid">
+								<label for="">City</label>
+
+								<input type="text" [(ngModel)]="enteredUser.city" #city="ngModel" required name="city" class="form-control" placeholder="city">
+
+								<span class="help-block" *ngIf="city.errors?.required && city.touched">
+									City is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="state.invalid && state.touched" [class.has-success]="state.valid">
+								<label for="">State</label>
+
+								<input type="text" [(ngModel)]="enteredUser.state" #state="ngModel" required name="state" class="form-control" placeholder="state">
+
+								<span class="help-block" *ngIf="state.errors?.required && state.touched">
+									State is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="country.invalid && country.touched" [class.has-success]="country.valid">
+								<label for="">Country</label>
+
+								<input type="text" [(ngModel)]="enteredUser.country" #country="ngModel" required name="country" class="form-control" placeholder="country">
+
+								<span class="help-block" *ngIf="country.errors?.required && country.touched">
+									Country is required
+								</span>
+							</div>
+
+							<div class="form-group" [class.has-error]="zip.invalid && zip.touched" [class.has-success]="state.valid">
+								<label for="">Zip</label>
+
+								<input type="number" [(ngModel)]="enteredUser.zip" #zip="ngModel" required name="zip" class="form-control" placeholder="zip">
+
+								<span class="help-block" *ngIf="zip.errors?.required && zip.touched">
+									Zip is required
+								</span>
+							</div>
+							
+							<div>
+								<button class="btn btn-primary btn-block" type="submit" [disabled]="regsiterForm.invalid">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			
+			</div>
+
+		</div>
+	<!-- </form> -->
+</div>

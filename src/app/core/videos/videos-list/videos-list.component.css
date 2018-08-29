@@ -1,0 +1,9 @@
+#videos-list {
+    height: 200px;
+    overflow-y: scroll;
+} 
+
+#commentContent{
+    height: 200px;
+    overflow-y: scroll;
+} 

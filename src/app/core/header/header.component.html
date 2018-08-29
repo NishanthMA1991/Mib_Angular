@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" routerLink="/">
+				<img src="../../../assets/images/logo.png"  class="img-dimension"  />
+			</a>
+			<!-- <span class="navbar-brand">Angular + Bootstrap</span> -->
+		</div>
+		<ul class="nav navbar-nav">
+			<li >
+				<a (click)="goToHome()"  > Home </a>
+			</li>
+			<li>
+				<a (click)="goTovideos()"  >Videos</a>
+			</li>
+			<li>
+				<a (click)="goToStats()"  >Team</a>
+			</li>
+			<li>
+				<a (click)="goToShopping()"  >Shop</a>
+			</li>
+			
+			<!-- <li>
+				<a (click)="goToAboutUS()"  >About US</a>
+			</li> -->
+		</ul>
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li *ngIf="LoggedInUserDetails && LoggedInUserDetails.email" style="margin-top: 5%;">
+				Welcome to <b>{{LoggedInUserDetails.email}} &nbsp;<a (click)="editProfile()">( Edit Profile )</a></b> 
+			</li>
+
+			<li>
+				<a (click)="openCart()">
+					<i class="fa fa-shopping-cart fa-2x"  aria-hidden="true"></i>
+				</a>
+			</li>
+
+			<!-- <li *ngIf="LoggedInUserDetails.isLoggedIn=='null'">
+				<a (click)="openLogin()"  >
+					<i class="fa fa-sign-in fa-2x"  aria-hidden="true"></i>
+				</a>													
+			</li>
+			<li *ngIf="LoggedInUserDetails.isLoggedIn!=null">
+				<a (click)="closeLogin()"  >
+						<i class="fas fa-sign-out-alt fa-2x"></i>
+				</a>													
+			</li> -->
+			
+			<ng-container *ngIf="LoggedInUserDetails && LoggedInUserDetails.isLoggedIn; else elseTemplate">
+				<li>
+					<a (click)="closeLogin()" title="Sign Out" >
+						<i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+					</a>
+				</li>
+			</ng-container>
+			<ng-template #elseTemplate>
+				<li>
+					<a (click)="openLogin()" title="Sign in"  >
+						<i class="fa fa-sign-in fa-2x"  aria-hidden="true"></i>
+					</a>
+				</li>
+			</ng-template>
+			
+			<!-- <li *ngIf="LoggedInUserDetails.email!=null">
+				Welcome to {{LoggedInUserDetails.email}}
+			</li> -->
+		</ul>
+	</div>
+</nav>
+

@@ -1,0 +1,43 @@
+<div class="container">
+    
+    <div class="row">
+        <div  class="col-md-4" *ngIf="videoList" style="height:500px;overflow-y:scroll;margin-bottom:20px;">
+            <h3 style="text-align:center;color:blueviolet">Team Videos</h3>
+            <div  class="col-md-12" *ngFor="let video of videoList.videosList">
+                <div (click)="playVideos(video._id)" style="cursor:pointer;">
+                    <div class="col-md-4">
+                        <img src="{{video.thumbnails}}" class="img-responsive" alt="{{video.videoTitle}}" >
+                    </div>
+                    <div class="col-md-8">
+                        <h5>{{video.videoTitle}}</h5>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="col-md-5">
+            <div class="col-md-12" *ngIf="selectedVideoId" >
+                <iframe class="col-md-12" height="345" [src]="safeURL"></iframe> 
+
+                <button [disabled]="dataByuserLike" class="btn btn-lg btn-primary btn-circle" (click)="OnLike()"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>({{redis_Like}})
+
+                <button [disabled]="dataByuserUnLike" class="btn btn-lg btn-primary btn-circle" (click)="OnUnLike()"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>({{redis_UnLike}})
+            </div>   
+        </div>
+        <div class="col-md-3" *ngIf="selectedVideoId">
+                <h4 style="color:blueviolet">Comments</h4> 
+                
+                <ng-container *ngIf="videosComments; else elseTemplate">
+                    <div class="col-md-12" id="commentContent" *ngFor="let comment of videosComments">
+                        <li> <b>{{videosUserComments[comment.userID]}}</b> {{comment.comments}}</li>
+                    </div> 
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <h4>No comments!!!</h4>
+                </ng-template> 
+
+                <hr>
+                <textarea rows="4" cols="40" id="comment" name="comment" [(ngModel)]="comment" ></textarea>
+                <button class="btn btn-info" type="submit" (click)="OnComment()" >Submit</button>
+            </div>
+    </div>
+</div>

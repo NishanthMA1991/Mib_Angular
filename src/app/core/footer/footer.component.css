@@ -1,0 +1,39 @@
+.module {
+    padding: 0px;
+    text-align: center;
+}
+
+#subModule {
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(35, 65, 242);
+    color: white
+}
+
+#footer {
+
+    padding-top: 0px;
+    background-color: #304FFE;
+    color: white;
+    position: relative;
+    bottom: 0px; 
+}
+
+.social {
+    color: #3d3d3d;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.social:hover {
+    color: #fff;
+}
+
+#team:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+#team {
+    color: white;
+}
